@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, Blueprint
 import numpy as np
 from waitress import serve
 import os
-from utils import predict
+from utils import predictQuality
 
 app=Flask(__name__)
 site = Blueprint("kawaldidi", __name__, "templates")
@@ -15,8 +15,8 @@ def home():
 @app.route("/predict" , methods=['POST'])
 def predict():
     float_features = [float(x) for x in request.form.values()]
-    features = [np.array(float_features)]
-    prediction = predict(features)
+    features = [float_features]
+    prediction = predictQuality(features)
     if(prediction[0]==1):
         output = "Good Quality"
     else:
