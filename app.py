@@ -5,8 +5,10 @@ import pickle
 from waitress import serve
 import os
 
+with open('models/random_forest1.pkl', 'rb') as f:
+    model = pickle.load(f)
+
 app=Flask(__name__)
-model=pickle.load(open("models/random_forest1.pkl",'rb'))
 site = Blueprint("kawaldidi", __name__, "templates")
 
 @app.route('/')
