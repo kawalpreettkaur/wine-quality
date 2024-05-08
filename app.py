@@ -6,7 +6,7 @@ from waitress import serve
 import os
 
 app=Flask(__name__)
-model=pickle.load(open(os.path.join(os.path.dirname(__file__), 'random_forest1.pkl'),'rb'))
+model=pickle.load(open("models/random_forest1.pkl",'rb'))
 site = Blueprint("kawaldidi", __name__, "templates")
 
 @app.route('/')
