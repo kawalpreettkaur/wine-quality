@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+  <title>Red Wine Quality Prediction System</title>
+</head>
+
+<body style="background:#f7f5f5;">
+    <div class="login">
+        <h1 style="color:rgb(198, 130, 238)";>Red Wine Quality Prediction</h1>
+
+        <form action="{{url_for('predict')}}"method="post">
+            <h3>Enter Fixed Acidity : </h3><input type="text" name="fixed_acidity"><br>
+            <hr>
+            <h3>Enter Volatile Acidity : </h3><input type="text" name="volatile_acidity"><br>
+            <hr>
+            <h3>Enter Citric Acidity : </h3><input type="text" name="citric_acidity"><br>
+            <hr>
+            <h3>Enter Residual Sugar : </h3><input type="text" name="residual_sugar"><br>
+            <hr>
+            <h3>Enter Chlorides : </h3><input type="text" name="chlorides"><br>
+            <hr>
+            <h3>Enter Free Sulpher Dioxide : </h3><input type="text" name="free_sulpher_dioxide"><br>
+            <hr>
+            <h3>Enter Total Sulpher Dioxide : </h3><input type="text" name="total_sulpher_dioxide"><br>
+            <hr>
+            <h3>Enter Density : </h3><input type="text" name="density"><br>
+            <hr>
+            <h3>Enter PH : </h3><input type="text" name="pH"><br>
+            <hr>
+            <h3>Enter Sulphates : </h3><input type="text" name="sulphates"><br>
+            <hr>
+            <h3>Enter Alcohol : </h3><input type="text" name="alcohol"><br>
+            <hr>
+            <button type=" Submit" class=" btn btn-primary btn-block btn-large">Prediction</button>
+        
+        </form>
+    <br>
+
+    <h1 style=" color:rgb(40, 20, 216);">
+    {{ prediction_text }}</h1>
+
+
+
+    </div>
+</body>
+</html>
