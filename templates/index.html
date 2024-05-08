@@ -11,27 +11,27 @@
         <h1 style="color:rgb(198, 130, 238)";>Red Wine Quality Prediction</h1>
 
         <form action="{{url_for('predict')}}"method="post">
-            <h3>Enter Fixed Acidity : </h3><input type="number" required name="fixed_acidity"><br>
+            <h3>Enter Fixed Acidity : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="fixed_acidity"><br>
             <hr>
-            <h3>Enter Volatile Acidity : </h3><input type="number" required name="volatile_acidity"><br>
+            <h3>Enter Volatile Acidity : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="volatile_acidity"><br>
             <hr>
-            <h3>Enter Citric Acidity : </h3><input type="number" required name="citric_acidity"><br>
+            <h3>Enter Citric Acidity : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="citric_acidity"><br>
             <hr>
-            <h3>Enter Residual Sugar : </h3><input type="number" required name="residual_sugar"><br>
+            <h3>Enter Residual Sugar : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="residual_sugar"><br>
             <hr>
-            <h3>Enter Chlorides : </h3><input type="number" required name="chlorides"><br>
+            <h3>Enter Chlorides : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="chlorides"><br>
             <hr>
-            <h3>Enter Free Sulpher Dioxide : </h3><input type="number" required name="free_sulpher_dioxide"><br>
+            <h3>Enter Free Sulpher Dioxide : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="free_sulpher_dioxide"><br>
             <hr>
-            <h3>Enter Total Sulpher Dioxide : </h3><input type="number" required name="total_sulpher_dioxide"><br>
+            <h3>Enter Total Sulpher Dioxide : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="total_sulpher_dioxide"><br>
             <hr>
-            <h3>Enter Density : </h3><input type="number" required name="density"><br>
+            <h3>Enter Density : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="density"><br>
             <hr>
-            <h3>Enter PH : </h3><input type="number" required name="pH"><br>
+            <h3>Enter PH : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="pH"><br>
             <hr>
-            <h3>Enter Sulphates : </h3><input type="number" required name="sulphates"><br>
+            <h3>Enter Sulphates : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="sulphates"><br>
             <hr>
-            <h3>Enter Alcohol : </h3><input type="number" required name="alcohol"><br>
+            <h3>Enter Alcohol : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.01" required name="alcohol"><br>
             <hr>
             <button type=" Submit" class=" btn btn-primary btn-block btn-large">Prediction</button>
         
