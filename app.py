@@ -29,5 +29,5 @@ def predict():
     return render_template("index.html", prediction_text = "The Red Wine is of {} ".format(output))
 
 if __name__ == '__main__':
-    serve(app, host='0.0.0.0', port=8080)        
+    serve(app, host='0.0.0.0', port=os.environ.get('PORT', 5000))        
 
