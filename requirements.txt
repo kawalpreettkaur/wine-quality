@@ -1,5 +1,5 @@
 Flask
-Gunicorn
+waitress
 pandas
 numpy
 scikit-learn

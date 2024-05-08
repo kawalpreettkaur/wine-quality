@@ -1,8 +1,8 @@
-
 from flask import Flask, render_template, request, Blueprint
 import numpy as np
 import pandas as pd
 import pickle
+from waitress import serve
 
 app=Flask(__name__)
 model=pickle.load(open('random_forest1.pkl','rb'))
@@ -26,5 +26,5 @@ def predict():
     return render_template("index.html", prediction_text = "The Red Wine is of {} ".format(output))
 
 if __name__ == '__main__':
-    app.run(debug=True)            
+    serve(app, host='0.0.0.0', port=8080)        
 
