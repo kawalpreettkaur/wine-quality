@@ -5,7 +5,7 @@ import os
 from utils import predictQuality
 
 app=Flask(__name__)
-site = Blueprint("kawaldidi", __name__, "templates")
+site = Blueprint("kawal", __name__, "templates")
 
 @app.route('/')
 def home():
