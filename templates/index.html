@@ -50,15 +50,13 @@
     }
     .prediction-text {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 20px;
       display: none; /* Initially hide the prediction text */
     }
-    .dialog-box {
-      background-color: #4caf50;
-      color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      margin-top: 20px;
+    .prediction-result {
+      font-size: 18px;
+      color: #4caf50;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -66,6 +64,9 @@
 <body>
   <div class="container">
     <h1>Red Wine Quality Prediction</h1>
+    <div class="prediction-text" id="prediction-box">
+      <p class="prediction-result" id="prediction-result"></p>
+    </div>
     <form id="wine-form" action="{{url_for('predict')}}" method="post">
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="fixed_acidity" placeholder="Fixed Acidity"><br>
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="volatile_acidity" placeholder="Volatile Acidity"><br>
@@ -81,9 +82,6 @@
       <button type="button" onclick="predictWine()">Predict</button>
       <button type="button" onclick="resetForm()">Reset</button>
     </form>
-    <div class="prediction-text" id="prediction-box">
-      <div class="dialog-box" id="prediction-dialog"></div>
-    </div>
   </div>
 
   <script>
@@ -96,7 +94,7 @@
       })
       .then(response => response.text())
       .then(data => {
-        document.getElementById("prediction-dialog").innerHTML = "<p>Prediction:</p><p>" + data + "</p>";
+        document.getElementById("prediction-result").innerHTML = data;
         document.getElementById("prediction-box").style.display = "block";
       })
       .catch(error => console.error("Error:", error));
