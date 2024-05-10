@@ -1,48 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset = "UTF-8">
-  <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Red Wine Quality Prediction System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #663399;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    form {
+      text-align: center;
+    }
+    input[type="number"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 50%;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #663399;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #501d99;
+    }
+    .prediction-text {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .prediction-result {
+      font-size: 24px;
+      color: #4caf50;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
-<body style="background:#f7f5f5;">
-    <div class="login">
-        <h1 style="color:rgb(198, 130, 238)";>Red Wine Quality Prediction</h1>
-
-        <form action="{{url_for('predict')}}"method="post">
-            <h3>Enter Fixed Acidity : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="fixed_acidity"><br>
-            <hr>
-            <h3>Enter Volatile Acidity : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="volatile_acidity"><br>
-            <hr>
-            <h3>Enter Citric Acidity : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="citric_acidity"><br>
-            <hr>
-            <h3>Enter Residual Sugar : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="residual_sugar"><br>
-            <hr>
-            <h3>Enter Chlorides : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="chlorides"><br>
-            <hr>
-            <h3>Enter Free Sulpher Dioxide : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="free_sulpher_dioxide"><br>
-            <hr>
-            <h3>Enter Total Sulpher Dioxide : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="total_sulpher_dioxide"><br>
-            <hr>
-            <h3>Enter Density : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="density"><br>
-            <hr>
-            <h3>Enter PH : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="pH"><br>
-            <hr>
-            <h3>Enter Sulphates : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="sulphates"><br>
-            <hr>
-            <h3>Enter Alcohol : </h3><input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="alcohol"><br>
-            <hr>
-            <button type=" Submit" class=" btn btn-primary btn-block btn-large">Prediction</button>
-        
-        </form>
-    <br>
-
-    <h1 style=" color:rgb(40, 20, 216);">
-    {{ prediction_text }}</h1>
-
-
-
+<body>
+  <div class="container">
+    <h1>Red Wine Quality Prediction</h1>
+    <form action="{{url_for('predict')}}" method="post">
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="fixed_acidity" placeholder="Fixed Acidity"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="volatile_acidity" placeholder="Volatile Acidity"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="citric_acidity" placeholder="Citric Acidity"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="residual_sugar" placeholder="Residual Sugar"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="chlorides" placeholder="Chlorides"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="free_sulpher_dioxide" placeholder="Free Sulphur Dioxide"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="total_sulpher_dioxide" placeholder="Total Sulphur Dioxide"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="density" placeholder="Density"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="pH" placeholder="pH"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="sulphates" placeholder="Sulphates"><br>
+      <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="alcohol" placeholder="Alcohol"><br>
+      <button type="submit">Predict</button>
+    </form>
+    <div class="prediction-text">
+      {% if prediction_text %}
+        <p>Prediction:</p>
+        <p class="prediction-result">{{ prediction_text }}</p>
+      {% endif %}
     </div>
+  </div>
 </body>
 </html>
