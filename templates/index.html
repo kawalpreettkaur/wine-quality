@@ -35,7 +35,7 @@
       border: 1px solid #ccc;
     }
     button {
-      width: 50%;
+      width: 45%;
       padding: 10px;
       margin-top: 20px;
       border: none;
@@ -51,11 +51,14 @@
     .prediction-text {
       text-align: center;
       margin-top: 30px;
+      display: none; /* Initially hide the prediction text */
     }
-    .prediction-result {
-      font-size: 24px;
-      color: #4caf50;
-      font-weight: bold;
+    .dialog-box {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -63,7 +66,7 @@
 <body>
   <div class="container">
     <h1>Red Wine Quality Prediction</h1>
-    <form action="{{url_for('predict')}}" method="post">
+    <form id="wine-form" action="{{url_for('predict')}}" method="post">
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="fixed_acidity" placeholder="Fixed Acidity"><br>
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="volatile_acidity" placeholder="Volatile Acidity"><br>
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="citric_acidity" placeholder="Citric Acidity"><br>
@@ -75,14 +78,34 @@
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="pH" placeholder="pH"><br>
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="sulphates" placeholder="Sulphates"><br>
       <input type="number" pattern="[0-9]+([.,][0-9]+)?" step="0.0000001" required name="alcohol" placeholder="Alcohol"><br>
-      <button type="submit">Predict</button>
+      <button type="button" onclick="predictWine()">Predict</button>
+      <button type="button" onclick="resetForm()">Reset</button>
     </form>
-    <div class="prediction-text">
-      {% if prediction_text %}
-        <p>Prediction:</p>
-        <p class="prediction-result">{{ prediction_text }}</p>
-      {% endif %}
+    <div class="prediction-text" id="prediction-box">
+      <div class="dialog-box" id="prediction-dialog"></div>
     </div>
   </div>
+
+  <script>
+    function predictWine() {
+      var form = document.getElementById("wine-form");
+      var formData = new FormData(form);
+      fetch("{{url_for('predict')}}", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("prediction-dialog").innerHTML = "<p>Prediction:</p><p>" + data + "</p>";
+        document.getElementById("prediction-box").style.display = "block";
+      })
+      .catch(error => console.error("Error:", error));
+    }
+
+    function resetForm() {
+      document.getElementById("wine-form").reset();
+      document.getElementById("prediction-box").style.display = "none";
+    }
+  </script>
 </body>
 </html>
